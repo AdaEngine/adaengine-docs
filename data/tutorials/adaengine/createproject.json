@@ -1,1 +1,1077 @@
-{"kind":"project","hierarchy":{"reference":"doc:\/\/AdaEngine\/tutorials\/AdaEngine","modules":[{"projects":[{"reference":"doc:\/\/AdaEngine\/tutorials\/AdaEngine\/CreateProject","sections":[{"reference":"doc:\/\/AdaEngine\/tutorials\/AdaEngine\/CreateProject#Create-project-using-Xcode","kind":"task"}]},{"sections":[{"kind":"task","reference":"doc:\/\/AdaEngine\/tutorials\/AdaEngine\/CreateFirst2DScene#Intro"},{"kind":"task","reference":"doc:\/\/AdaEngine\/tutorials\/AdaEngine\/CreateFirst2DScene#Create-an-app"},{"kind":"task","reference":"doc:\/\/AdaEngine\/tutorials\/AdaEngine\/CreateFirst2DScene#Create-a-main-camera"},{"reference":"doc:\/\/AdaEngine\/tutorials\/AdaEngine\/CreateFirst2DScene#First-sprite","kind":"task"},{"kind":"task","reference":"doc:\/\/AdaEngine\/tutorials\/AdaEngine\/CreateFirst2DScene#Make-it-move"}],"reference":"doc:\/\/AdaEngine\/tutorials\/AdaEngine\/CreateFirst2DScene"},{"reference":"doc:\/\/AdaEngine\/tutorials\/AdaEngine\/PlayerAndText","sections":[{"reference":"doc:\/\/AdaEngine\/tutorials\/AdaEngine\/PlayerAndText#Add-Player-component","kind":"task"},{"reference":"doc:\/\/AdaEngine\/tutorials\/AdaEngine\/PlayerAndText#Add-Text-component","kind":"task"}]},{"reference":"doc:\/\/AdaEngine\/tutorials\/AdaEngine\/EventListeners","sections":[{"kind":"task","reference":"doc:\/\/AdaEngine\/tutorials\/AdaEngine\/EventListeners#Base-of-Event-Subscriber-pattern"},{"kind":"task","reference":"doc:\/\/AdaEngine\/tutorials\/AdaEngine\/EventListeners#Subscribe-to-scene-events"},{"reference":"doc:\/\/AdaEngine\/tutorials\/AdaEngine\/EventListeners#Type-of-events","kind":"task"},{"kind":"task","reference":"doc:\/\/AdaEngine\/tutorials\/AdaEngine\/EventListeners#Additional-for-physics"}]}],"reference":"doc:\/\/AdaEngine\/tutorials\/AdaEngine\/Create-your-first-2D-game-project."}],"paths":[["doc:\/\/AdaEngine\/tutorials\/AdaEngine","doc:\/\/AdaEngine\/tutorials\/AdaEngine\/$volume","doc:\/\/AdaEngine\/tutorials\/AdaEngine\/Create-your-first-2D-game-project."]]},"schemaVersion":{"minor":3,"patch":0,"major":0},"sections":[{"kind":"hero","chapter":"Create your first 2D game project.","estimatedTimeInMinutes":5,"title":"Create your first game project","content":[{"type":"paragraph","inlineContent":[{"text":"In this tutorial you learn how to create your first AdaEngine project.","type":"text"}]},{"type":"paragraph","inlineContent":[{"type":"text","text":"You should have some programming experience and knowledge of basic Swift language syntax."}]}]},{"kind":"tasks","tasks":[{"title":"Create project using Xcode.","contentSection":[{"kind":"contentAndMedia","content":[{"type":"paragraph","inlineContent":[{"type":"text","text":"Xcode project can give you access to build your game on all Apple devices like iOS, macOS and tvOS."}]}],"mediaPosition":"trailing"}],"stepsSection":[{"code":null,"content":[{"inlineContent":[{"type":"text","text":"Open Xcode app and select "},{"inlineContent":[{"type":"text","text":"Create a new Xcode project"}],"type":"strong"}],"type":"paragraph"}],"runtimePreview":null,"caption":[],"media":"CP-1-1.png","type":"step"},{"runtimePreview":null,"code":null,"type":"step","caption":[],"media":"CP-2-2.png","content":[{"type":"paragraph","inlineContent":[{"type":"text","text":"Xcode will open a new popup window where you should select "},{"type":"strong","inlineContent":[{"type":"text","text":"Multiplatfrom"}]},{"type":"text","text":" tab and then select "},{"type":"strong","inlineContent":[{"text":"App","type":"text"}]},{"text":" project. After that give the name for your project and choose location where your project should be created.","type":"text"}]}]},{"content":[{"inlineContent":[{"text":"Now you can see a new Xcode project where you can configure your game targets, dependencies and supported platfroms. Currently it use SwiftUI, but we will change it later.","type":"text"}],"type":"paragraph"}],"media":"CP-2-3.png","code":null,"runtimePreview":null,"caption":[],"type":"step"},{"inlineContent":[{"type":"text","text":"Let’s configure our xcode project file."}],"type":"paragraph"},{"media":"CP-2-4.png","content":[{"type":"paragraph","inlineContent":[{"type":"text","text":"For the first, we should add AdaEngine as dependency to our project. Select your Xcode project file, and move to "},{"code":"Package Dependencies","type":"codeVoice"},{"type":"text","text":"."}]}],"code":null,"caption":[],"type":"step","runtimePreview":null},{"inlineContent":[{"text":"AdaEngine use a lot of C++ libraries and we should tell the compiler, that we want to add C++ to our app.","type":"text"}],"type":"paragraph"},{"media":"CP-2-7.png","runtimePreview":null,"content":[{"type":"paragraph","inlineContent":[{"type":"text","text":"We should add C++ interop to your project. Add "},{"type":"codeVoice","code":"-enable-experimental-cxx-interop"},{"type":"text","text":" value to your "},{"type":"codeVoice","code":"OTHER_SWIFT_FLAGS"},{"type":"text","text":"."}]}],"type":"step","code":null,"caption":[]},{"caption":[],"type":"step","media":"CP-2-8.png","content":[{"type":"paragraph","inlineContent":[{"text":"To run you project on macOS, remove ","type":"text"},{"type":"codeVoice","code":"App Sandbox"},{"text":" from ","type":"text"},{"type":"codeVoice","code":"Capabilities"},{"type":"text","text":" tab."}]}],"runtimePreview":null,"code":null},{"type":"paragraph","inlineContent":[{"text":"Let’s change SwiftUI project to AdaEngine project.","type":"text"}]},{"runtimePreview":null,"content":[{"inlineContent":[{"type":"text","text":"Move to "},{"code":"FirstPackageApp.swift","type":"codeVoice"},{"type":"text","text":" and you can see next swift code."}],"type":"paragraph"}],"caption":[],"media":null,"type":"step","code":"CP-2-1-app.swift"},{"caption":[],"type":"step","media":null,"code":"CP-2-2-app.swift","runtimePreview":null,"content":[{"type":"paragraph","inlineContent":[{"type":"text","text":"Change "},{"type":"codeVoice","code":"import SwiftUI"},{"text":" to ","type":"text"},{"type":"codeVoice","code":"import AdaEngine"},{"text":" and remove ","type":"text"},{"type":"codeVoice","code":"body"},{"text":" property.","type":"text"}]}]},{"type":"step","runtimePreview":null,"content":[{"inlineContent":[{"code":"App","type":"codeVoice"},{"type":"text","text":" protocol requires us to implement "},{"type":"codeVoice","code":"scene"},{"text":" property where we should pass our ","type":"text"},{"type":"codeVoice","code":"AppScene"},{"type":"text","text":" instance. "},{"code":"AppScene","type":"codeVoice"},{"type":"text","text":" tell the AdaEngine how to configure application and how to show app windows."}],"type":"paragraph"}],"caption":[],"media":null,"code":"CP-2-3-app.swift"},{"media":null,"runtimePreview":null,"code":"CP-2-4-app.swift","content":[{"type":"paragraph","inlineContent":[{"type":"text","text":"Now add modification for your "},{"code":"AppScene","type":"codeVoice"},{"type":"text","text":". "},{"code":"windowTitle","type":"codeVoice"},{"type":"text","text":" modifier add custom window title for your window. "},{"code":"windowMode","type":"codeVoice"},{"type":"text","text":" modifier change window presentation from fullscreen to windowed."}]}],"caption":[],"type":"step"},{"type":"step","caption":[],"content":[{"type":"paragraph","inlineContent":[{"type":"text","text":"Finally, you can run you first project and you will see a black screen. That’s ok for empty scene."}]}],"runtimePreview":null,"media":"CP-2-9.png","code":null}],"anchor":"Create-project-using-Xcode"}]},{"featuredEyebrow":"Tutorial","title":"Create your first 2D scene","kind":"callToAction","action":{"isActive":true,"identifier":"doc:\/\/AdaEngine\/tutorials\/AdaEngine\/CreateFirst2DScene","type":"reference","overridingTitle":"Get started","overridingTitleInlineContent":[{"type":"text","text":"Get started"}]},"abstract":[{"text":"In this tutorial you can learn how to create your first 2D scene using AdaEngine","type":"text"}]}],"identifier":{"interfaceLanguage":"swift","url":"doc:\/\/AdaEngine\/tutorials\/AdaEngine\/CreateProject"},"variants":[{"traits":[{"interfaceLanguage":"swift"}],"paths":["\/tutorials\/adaengine\/createproject"]}],"metadata":{"role":"project","categoryPathComponent":"AdaEngine","category":"Ada Engine","title":"Create your first game project"},"references":{"doc://AdaEngine/tutorials/AdaEngine/EventListeners#Additional-for-physics":{"kind":"section","identifier":"doc:\/\/AdaEngine\/tutorials\/AdaEngine\/EventListeners#Additional-for-physics","abstract":[{"type":"text","text":"In this tutorial you will learn about the event listeners system in Ada Engine."},{"type":"text","text":" "},{"text":"How can you catch events and process them","type":"text"}],"title":"Additional for physics","role":"pseudoSymbol","url":"\/tutorials\/adaengine\/eventlisteners#Additional-for-physics","type":"section"},"doc://AdaEngine/tutorials/AdaEngine/CreateFirst2DScene":{"estimatedTime":"20min","kind":"project","type":"topic","identifier":"doc:\/\/AdaEngine\/tutorials\/AdaEngine\/CreateFirst2DScene","url":"\/tutorials\/adaengine\/createfirst2dscene","title":"Create your first 2D scene","abstract":[{"type":"text","text":"In this tutorial you can learn how to create your first 2D scene using AdaEngine"}],"role":"project"},"doc://AdaEngine/tutorials/AdaEngine/CreateFirst2DScene#Create-an-app":{"identifier":"doc:\/\/AdaEngine\/tutorials\/AdaEngine\/CreateFirst2DScene#Create-an-app","kind":"section","abstract":[{"type":"text","text":"In this tutorial you can learn how to create your first 2D scene using AdaEngine"}],"title":"Create an app","role":"pseudoSymbol","url":"\/tutorials\/adaengine\/createfirst2dscene#Create-an-app","type":"section"},"doc://AdaEngine/tutorials/AdaEngine":{"kind":"overview","url":"\/tutorials\/adaengine","identifier":"doc:\/\/AdaEngine\/tutorials\/AdaEngine","type":"topic","title":"Meet AdaEngine","abstract":[{"text":"Learn the basics of AdaEngine and starts to develop your own games!","type":"text"}],"role":"overview"},"doc://AdaEngine/tutorials/AdaEngine/EventListeners#Subscribe-to-scene-events":{"identifier":"doc:\/\/AdaEngine\/tutorials\/AdaEngine\/EventListeners#Subscribe-to-scene-events","kind":"section","abstract":[{"type":"text","text":"In this tutorial you will learn about the event listeners system in Ada Engine."},{"type":"text","text":" "},{"text":"How can you catch events and process them","type":"text"}],"title":"Subscribe to scene events","role":"pseudoSymbol","url":"\/tutorials\/adaengine\/eventlisteners#Subscribe-to-scene-events","type":"section"},"doc://AdaEngine/tutorials/AdaEngine/CreateProject#Create-project-using-Xcode":{"url":"\/tutorials\/adaengine\/createproject#Create-project-using-Xcode","type":"section","kind":"section","role":"pseudoSymbol","abstract":[{"type":"text","text":"In this tutorial you learn how to create your first AdaEngine project."}],"identifier":"doc:\/\/AdaEngine\/tutorials\/AdaEngine\/CreateProject#Create-project-using-Xcode","title":"Create project using Xcode."},"doc://AdaEngine/tutorials/AdaEngine/CreateFirst2DScene#Create-a-main-camera":{"title":"Create a main camera.","type":"section","role":"pseudoSymbol","abstract":[{"type":"text","text":"In this tutorial you can learn how to create your first 2D scene using AdaEngine"}],"identifier":"doc:\/\/AdaEngine\/tutorials\/AdaEngine\/CreateFirst2DScene#Create-a-main-camera","url":"\/tutorials\/adaengine\/createfirst2dscene#Create-a-main-camera","kind":"section"},"CP-2-3-app.swift":{"identifier":"CP-2-3-app.swift","fileName":"FirstPackageApp.swift","content":["import AdaEngine","","@main","struct FirstPackageApp: App {","    var scene: some AppScene {","        GameAppScene {","            Scene()","        }","    }","}"],"highlights":[{"line":5},{"line":6},{"line":7},{"line":8},{"line":9}],"syntax":"swift","type":"file","fileType":"swift"},"doc://AdaEngine/tutorials/AdaEngine/PlayerAndText#Add-Player-component":{"kind":"section","identifier":"doc:\/\/AdaEngine\/tutorials\/AdaEngine\/PlayerAndText#Add-Player-component","abstract":[{"type":"text","text":"In this tutorial, you will learn how to add a player component that you can control and how to add text and various labels to your game scene."}],"title":"Add Player component","role":"pseudoSymbol","url":"\/tutorials\/adaengine\/playerandtext#Add-Player-component","type":"section"},"doc://AdaEngine/tutorials/AdaEngine/PlayerAndText":{"url":"\/tutorials\/adaengine\/playerandtext","abstract":[{"text":"In this tutorial, you will learn how to add a player component that you can control and how to add text and various labels to your game scene.","type":"text"}],"role":"project","title":"Player and Text in Ada Engine","kind":"project","estimatedTime":"5min","identifier":"doc:\/\/AdaEngine\/tutorials\/AdaEngine\/PlayerAndText","type":"topic"},"doc://AdaEngine/tutorials/AdaEngine/EventListeners#Base-of-Event-Subscriber-pattern":{"kind":"section","url":"\/tutorials\/adaengine\/eventlisteners#Base-of-Event-Subscriber-pattern","type":"section","role":"pseudoSymbol","identifier":"doc:\/\/AdaEngine\/tutorials\/AdaEngine\/EventListeners#Base-of-Event-Subscriber-pattern","abstract":[{"type":"text","text":"In this tutorial you will learn about the event listeners system in Ada Engine."},{"type":"text","text":" "},{"text":"How can you catch events and process them","type":"text"}],"title":"Base of Event-Subscriber pattern"},"CP-2-2-app.swift":{"type":"file","fileType":"swift","syntax":"swift","identifier":"CP-2-2-app.swift","fileName":"FirstPackageApp.swift","content":["import AdaEngine","","@main","struct FirstPackageApp: App {","    ","}"],"highlights":[{"line":1},{"line":5}]},"doc://AdaEngine/tutorials/AdaEngine/CreateFirst2DScene#First-sprite":{"type":"section","url":"\/tutorials\/adaengine\/createfirst2dscene#First-sprite","abstract":[{"type":"text","text":"In this tutorial you can learn how to create your first 2D scene using AdaEngine"}],"kind":"section","role":"pseudoSymbol","title":"First sprite","identifier":"doc:\/\/AdaEngine\/tutorials\/AdaEngine\/CreateFirst2DScene#First-sprite"},"CP-2-7.png":{"type":"image","alt":"We add experimental-cxx-interop to project.","variants":[{"url":"\/images\/CP-2-7.png","traits":["1x","light"]}],"identifier":"CP-2-7.png"},"doc://AdaEngine/tutorials/AdaEngine/Create-your-first-2D-game-project.":{"kind":"article","identifier":"doc:\/\/AdaEngine\/tutorials\/AdaEngine\/Create-your-first-2D-game-project.","abstract":[],"title":"Create your first 2D game project.","role":"article","url":"\/tutorials\/adaengine\/create-your-first-2d-game-project.","type":"topic"},"CP-2-8.png":{"variants":[{"url":"\/images\/CP-2-8.png","traits":["1x","light"]}],"identifier":"CP-2-8.png","alt":"App Sanbox","type":"image"},"CP-2-4-app.swift":{"highlights":[{"line":9},{"line":10}],"identifier":"CP-2-4-app.swift","type":"file","syntax":"swift","content":["import AdaEngine","","@main","struct FirstPackageApp: App {","    var scene: some AppScene {","        GameAppScene {","            Scene()","        }","        .windowMode(.windowed)","        .windowTitle(\"First Ada App\")","    }","}"],"fileName":"FirstPackageApp.swift","fileType":"swift"},"CP-2-3.png":{"variants":[{"url":"\/images\/CP-2-3.png","traits":["1x","light"]}],"identifier":"CP-2-3.png","alt":"You can see an Xcode project for SwiftUI","type":"image"},"CP-2-2.png":{"identifier":"CP-2-2.png","alt":"Popup when you choose project template","variants":[{"traits":["1x","light"],"url":"\/images\/CP-2-2.png"}],"type":"image"},"doc://AdaEngine/tutorials/AdaEngine/CreateProject":{"url":"\/tutorials\/adaengine\/createproject","abstract":[{"text":"In this tutorial you learn how to create your first AdaEngine project.","type":"text"}],"role":"project","title":"Create your first game project","kind":"project","estimatedTime":"5min","identifier":"doc:\/\/AdaEngine\/tutorials\/AdaEngine\/CreateProject","type":"topic"},"doc://AdaEngine/tutorials/AdaEngine/PlayerAndText#Add-Text-component":{"title":"Add Text component","type":"section","role":"pseudoSymbol","abstract":[{"type":"text","text":"In this tutorial, you will learn how to add a player component that you can control and how to add text and various labels to your game scene."}],"identifier":"doc:\/\/AdaEngine\/tutorials\/AdaEngine\/PlayerAndText#Add-Text-component","url":"\/tutorials\/adaengine\/playerandtext#Add-Text-component","kind":"section"},"CP-1-1.png":{"variants":[{"traits":["1x","light"],"url":"\/images\/CP-1-1.png"}],"identifier":"CP-1-1.png","alt":"You can see Xcode Welcome screen.","type":"image"},"doc://AdaEngine/tutorials/AdaEngine/CreateFirst2DScene#Make-it-move":{"type":"section","url":"\/tutorials\/adaengine\/createfirst2dscene#Make-it-move","abstract":[{"type":"text","text":"In this tutorial you can learn how to create your first 2D scene using AdaEngine"}],"kind":"section","role":"pseudoSymbol","title":"Make it move","identifier":"doc:\/\/AdaEngine\/tutorials\/AdaEngine\/CreateFirst2DScene#Make-it-move"},"doc://AdaEngine/tutorials/AdaEngine/EventListeners#Type-of-events":{"kind":"section","url":"\/tutorials\/adaengine\/eventlisteners#Type-of-events","type":"section","role":"pseudoSymbol","identifier":"doc:\/\/AdaEngine\/tutorials\/AdaEngine\/EventListeners#Type-of-events","abstract":[{"type":"text","text":"In this tutorial you will learn about the event listeners system in Ada Engine."},{"type":"text","text":" "},{"text":"How can you catch events and process them","type":"text"}],"title":"Type of events"},"CP-2-1-app.swift":{"highlights":[],"identifier":"CP-2-1-app.swift","type":"file","syntax":"swift","content":["import SwiftUI","","@main","struct FirstPackageApp: App {","    var body: some Scene {","        WindowGroup {","            ContentView()","        }","    }","}"],"fileName":"FirstPackageApp.swift","fileType":"swift"},"doc://AdaEngine/tutorials/AdaEngine/CreateFirst2DScene#Intro":{"kind":"section","url":"\/tutorials\/adaengine\/createfirst2dscene#Intro","identifier":"doc:\/\/AdaEngine\/tutorials\/AdaEngine\/CreateFirst2DScene#Intro","role":"pseudoSymbol","title":"Intro","type":"section","abstract":[{"type":"text","text":"In this tutorial you can learn how to create your first 2D scene using AdaEngine"}]},"CP-2-9.png":{"variants":[{"url":"\/images\/CP-2-9.png","traits":["1x","light"]}],"identifier":"CP-2-9.png","alt":"Your first application window","type":"image"},"CP-2-4.png":{"identifier":"CP-2-4.png","alt":"You can see package dependencies tab in Xcode","variants":[{"traits":["1x","light"],"url":"\/images\/CP-2-4.png"}],"type":"image"},"doc://AdaEngine/tutorials/AdaEngine/EventListeners":{"estimatedTime":"5min","kind":"project","type":"topic","identifier":"doc:\/\/AdaEngine\/tutorials\/AdaEngine\/EventListeners","url":"\/tutorials\/adaengine\/eventlisteners","title":"Event Listeners in Ada Engine","abstract":[{"type":"text","text":"In this tutorial you will learn about the event listeners system in Ada Engine."},{"text":" ","type":"text"},{"text":"How can you catch events and process them","type":"text"}],"role":"project"}}}
+{
+  "kind": "project",
+  "hierarchy": {
+    "reference": "doc://AdaEngine/tutorials/AdaEngine",
+    "modules": [
+      {
+        "projects": [
+          {
+            "reference": "doc://AdaEngine/tutorials/AdaEngine/CreateProject",
+            "sections": [
+              {
+                "reference": "doc://AdaEngine/tutorials/AdaEngine/CreateProject#Create-project-using-Xcode",
+                "kind": "task"
+              }
+            ]
+          },
+          {
+            "sections": [
+              {
+                "kind": "task",
+                "reference": "doc://AdaEngine/tutorials/AdaEngine/CreateFirst2DScene#Intro"
+              },
+              {
+                "kind": "task",
+                "reference": "doc://AdaEngine/tutorials/AdaEngine/CreateFirst2DScene#Create-an-app"
+              },
+              {
+                "kind": "task",
+                "reference": "doc://AdaEngine/tutorials/AdaEngine/CreateFirst2DScene#Create-a-main-camera"
+              },
+              {
+                "reference": "doc://AdaEngine/tutorials/AdaEngine/CreateFirst2DScene#First-sprite",
+                "kind": "task"
+              },
+              {
+                "kind": "task",
+                "reference": "doc://AdaEngine/tutorials/AdaEngine/CreateFirst2DScene#Make-it-move"
+              }
+            ],
+            "reference": "doc://AdaEngine/tutorials/AdaEngine/CreateFirst2DScene"
+          },
+          {
+            "reference": "doc://AdaEngine/tutorials/AdaEngine/PlayerAndText",
+            "sections": [
+              {
+                "reference": "doc://AdaEngine/tutorials/AdaEngine/PlayerAndText#Add-Player-component",
+                "kind": "task"
+              },
+              {
+                "reference": "doc://AdaEngine/tutorials/AdaEngine/PlayerAndText#Add-Text-component",
+                "kind": "task"
+              }
+            ]
+          },
+          {
+            "reference": "doc://AdaEngine/tutorials/AdaEngine/EventListeners",
+            "sections": [
+              {
+                "kind": "task",
+                "reference": "doc://AdaEngine/tutorials/AdaEngine/EventListeners#Base-of-Event-Subscriber-pattern"
+              },
+              {
+                "kind": "task",
+                "reference": "doc://AdaEngine/tutorials/AdaEngine/EventListeners#Subscribe-to-scene-events"
+              },
+              {
+                "reference": "doc://AdaEngine/tutorials/AdaEngine/EventListeners#Type-of-events",
+                "kind": "task"
+              },
+              {
+                "kind": "task",
+                "reference": "doc://AdaEngine/tutorials/AdaEngine/EventListeners#Additional-for-physics"
+              }
+            ]
+          }
+        ],
+        "reference": "doc://AdaEngine/tutorials/AdaEngine/Create-your-first-2D-game-project."
+      }
+    ],
+    "paths": [
+      [
+        "doc://AdaEngine/tutorials/AdaEngine",
+        "doc://AdaEngine/tutorials/AdaEngine/$volume",
+        "doc://AdaEngine/tutorials/AdaEngine/Create-your-first-2D-game-project."
+      ]
+    ]
+  },
+  "schemaVersion": {
+    "minor": 3,
+    "patch": 0,
+    "major": 0
+  },
+  "sections": [
+    {
+      "kind": "hero",
+      "chapter": "Create your first 2D game project.",
+      "estimatedTimeInMinutes": 5,
+      "title": "Create your first game project",
+      "content": [
+        {
+          "type": "paragraph",
+          "inlineContent": [
+            {
+              "text": "In this tutorial you learn how to create your first AdaEngine project.",
+              "type": "text"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "inlineContent": [
+            {
+              "type": "text",
+              "text": "You should have some programming experience and knowledge of basic Swift language syntax."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "tasks",
+      "tasks": [
+        {
+          "title": "Create project using Xcode.",
+          "contentSection": [
+            {
+              "kind": "contentAndMedia",
+              "content": [
+                {
+                  "type": "paragraph",
+                  "inlineContent": [
+                    {
+                      "type": "text",
+                      "text": "Xcode project can give you access to build your game on all Apple devices like iOS, macOS and tvOS."
+                    }
+                  ]
+                }
+              ],
+              "mediaPosition": "trailing"
+            }
+          ],
+          "stepsSection": [
+            {
+              "code": null,
+              "content": [
+                {
+                  "inlineContent": [
+                    {
+                      "type": "text",
+                      "text": "Open Xcode app and select "
+                    },
+                    {
+                      "inlineContent": [
+                        {
+                          "type": "text",
+                          "text": "Create a new Xcode project"
+                        }
+                      ],
+                      "type": "strong"
+                    }
+                  ],
+                  "type": "paragraph"
+                }
+              ],
+              "runtimePreview": null,
+              "caption": [],
+              "media": "CP-1-1.png",
+              "type": "step"
+            },
+            {
+              "runtimePreview": null,
+              "code": null,
+              "type": "step",
+              "caption": [],
+              "media": "CP-2-2.png",
+              "content": [
+                {
+                  "type": "paragraph",
+                  "inlineContent": [
+                    {
+                      "type": "text",
+                      "text": "Xcode will open a new popup window where you should select "
+                    },
+                    {
+                      "type": "strong",
+                      "inlineContent": [
+                        {
+                          "type": "text",
+                          "text": "Multiplatfrom"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "text",
+                      "text": " tab and then select "
+                    },
+                    {
+                      "type": "strong",
+                      "inlineContent": [
+                        {
+                          "text": "App",
+                          "type": "text"
+                        }
+                      ]
+                    },
+                    {
+                      "text": " project. After that give the name for your project and choose a location where your project should be created.",
+                      "type": "text"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "content": [
+                {
+                  "inlineContent": [
+                    {
+                      "text": "Now you can see a new Xcode project where you can configure your game targets, dependencies and supported platfroms. Currently it uses SwiftUI, but we will change it later.",
+                      "type": "text"
+                    }
+                  ],
+                  "type": "paragraph"
+                }
+              ],
+              "media": "CP-2-3.png",
+              "code": null,
+              "runtimePreview": null,
+              "caption": [],
+              "type": "step"
+            },
+            {
+              "inlineContent": [
+                {
+                  "type": "text",
+                  "text": "Let’s configure our xcode project file."
+                }
+              ],
+              "type": "paragraph"
+            },
+            {
+              "media": "CP-2-4.png",
+              "content": [
+                {
+                  "type": "paragraph",
+                  "inlineContent": [
+                    {
+                      "type": "text",
+                      "text": "First, we should add AdaEngine as a dependency to our project. Select your Xcode project file, and move to the "
+                    },
+                    {
+                      "code": "Package Dependencies",
+                      "type": "codeVoice"
+                    },
+                    {
+                      "type": "text",
+                      "text": "tab."
+                    }
+                  ]
+                }
+              ],
+              "code": null,
+              "caption": [],
+              "type": "step",
+              "runtimePreview": null
+            },
+            {
+              "inlineContent": [
+                {
+                  "text": "AdaEngine uses a lot of C++ libraries and we should tell the compiler that we want to add C++ to our app. Navigate to the target listed under targets and select the Build Settings tab. Then select All and Levels.",
+                  "type": "text"
+                }
+              ],
+              "type": "paragraph"
+            },
+            {
+              "media": "CP-2-7.png",
+              "runtimePreview": null,
+              "content": [
+                {
+                  "type": "paragraph",
+                  "inlineContent": [
+                    {
+                      "type": "text",
+                      "text": "We should add C++ interop to your project. Add "
+                    },
+                    {
+                      "type": "codeVoice",
+                      "code": "-cxx-interoperability-mode=default"
+                    },
+                    {
+                      "type": "text",
+                      "text": " value to your "
+                    },
+                    {
+                      "type": "codeVoice",
+                      "code": "OTHER_SWIFT_FLAGS"
+                    },
+                    {
+                      "type": "text",
+                      "text": "."
+                    }
+                  ]
+                }
+              ],
+              "type": "step",
+              "code": null,
+              "caption": []
+            },
+            {
+              "caption": [],
+              "type": "step",
+              "media": "CP-2-8.png",
+              "content": [
+                {
+                  "type": "paragraph",
+                  "inlineContent": [
+                    {
+                      "text": "To run you project on macOS, remove ",
+                      "type": "text"
+                    },
+                    {
+                      "type": "codeVoice",
+                      "code": "App Sandbox"
+                    },
+                    {
+                      "text": " from ",
+                      "type": "text"
+                    },
+                    {
+                      "type": "codeVoice",
+                      "code": "Signing & Capabilities"
+                    },
+                    {
+                      "type": "text",
+                      "text": " tab."
+                    }
+                  ]
+                }
+              ],
+              "runtimePreview": null,
+              "code": null
+            },
+            {
+              "type": "paragraph",
+              "inlineContent": [
+                {
+                  "text": "Let’s change SwiftUI project to AdaEngine project.",
+                  "type": "text"
+                }
+              ]
+            },
+            {
+              "runtimePreview": null,
+              "content": [
+                {
+                  "inlineContent": [
+                    {
+                      "type": "text",
+                      "text": "Move to "
+                    },
+                    {
+                      "code": "FirstPackageApp.swift",
+                      "type": "codeVoice"
+                    },
+                    {
+                      "type": "text",
+                      "text": " and you can see the swift code."
+                    }
+                  ],
+                  "type": "paragraph"
+                }
+              ],
+              "caption": [],
+              "media": null,
+              "type": "step",
+              "code": "CP-2-1-app.swift"
+            },
+            {
+              "caption": [],
+              "type": "step",
+              "media": null,
+              "code": "CP-2-2-app.swift",
+              "runtimePreview": null,
+              "content": [
+                {
+                  "type": "paragraph",
+                  "inlineContent": [
+                    {
+                      "type": "text",
+                      "text": "Change "
+                    },
+                    {
+                      "type": "codeVoice",
+                      "code": "import SwiftUI"
+                    },
+                    {
+                      "text": " to ",
+                      "type": "text"
+                    },
+                    {
+                      "type": "codeVoice",
+                      "code": "import AdaEngine"
+                    },
+                    {
+                      "text": " and remove the ",
+                      "type": "text"
+                    },
+                    {
+                      "type": "codeVoice",
+                      "code": "body"
+                    },
+                    {
+                      "text": " property.",
+                      "type": "text"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "step",
+              "runtimePreview": null,
+              "content": [
+                {
+                  "inlineContent": [
+                    {
+                      "code": "App",
+                      "type": "codeVoice"
+                    },
+                    {
+                      "type": "text",
+                      "text": " protocol requires us to implement the "
+                    },
+                    {
+                      "type": "codeVoice",
+                      "code": "scene"
+                    },
+                    {
+                      "text": " property where we should pass our ",
+                      "type": "text"
+                    },
+                    {
+                      "type": "codeVoice",
+                      "code": "AppScene"
+                    },
+                    {
+                      "type": "text",
+                      "text": " instance. "
+                    },
+                    {
+                      "code": "AppScene",
+                      "type": "codeVoice"
+                    },
+                    {
+                      "type": "text",
+                      "text": " tells the AdaEngine how to configure the application and how to show the app windows."
+                    }
+                  ],
+                  "type": "paragraph"
+                }
+              ],
+              "caption": [],
+              "media": null,
+              "code": "CP-2-3-app.swift"
+            },
+            {
+              "media": null,
+              "runtimePreview": null,
+              "code": "CP-2-4-app.swift",
+              "content": [
+                {
+                  "type": "paragraph",
+                  "inlineContent": [
+                    {
+                      "type": "text",
+                      "text": "Now add modification for your "
+                    },
+                    {
+                      "code": "AppScene",
+                      "type": "codeVoice"
+                    },
+                    {
+                      "type": "text",
+                      "text": ". "
+                    },
+                    {
+                      "code": "windowTitle",
+                      "type": "codeVoice"
+                    },
+                    {
+                      "type": "text",
+                      "text": " modifier add custom window title for your window. "
+                    },
+                    {
+                      "code": "windowMode",
+                      "type": "codeVoice"
+                    },
+                    {
+                      "type": "text",
+                      "text": " modifier change window presentation from fullscreen to windowed."
+                    }
+                  ]
+                }
+              ],
+              "caption": [],
+              "type": "step"
+            },
+            {
+              "type": "step",
+              "caption": [],
+              "content": [
+                {
+                  "type": "paragraph",
+                  "inlineContent": [
+                    {
+                      "type": "text",
+                      "text": "Finally, you can run your first project and you will see a black screen. That’s ok for an empty scene."
+                    }
+                  ]
+                }
+              ],
+              "runtimePreview": null,
+              "media": "CP-2-9.png",
+              "code": null
+            }
+          ],
+          "anchor": "Create-project-using-Xcode"
+        }
+      ]
+    },
+    {
+      "featuredEyebrow": "Tutorial",
+      "title": "Create your first 2D scene",
+      "kind": "callToAction",
+      "action": {
+        "isActive": true,
+        "identifier": "doc://AdaEngine/tutorials/AdaEngine/CreateFirst2DScene",
+        "type": "reference",
+        "overridingTitle": "Get started",
+        "overridingTitleInlineContent": [
+          {
+            "type": "text",
+            "text": "Get started"
+          }
+        ]
+      },
+      "abstract": [
+        {
+          "text": "In this tutorial you can learn how to create your first 2D scene using AdaEngine",
+          "type": "text"
+        }
+      ]
+    }
+  ],
+  "identifier": {
+    "interfaceLanguage": "swift",
+    "url": "doc://AdaEngine/tutorials/AdaEngine/CreateProject"
+  },
+  "variants": [
+    {
+      "traits": [
+        {
+          "interfaceLanguage": "swift"
+        }
+      ],
+      "paths": [
+        "/tutorials/adaengine/createproject"
+      ]
+    }
+  ],
+  "metadata": {
+    "role": "project",
+    "categoryPathComponent": "AdaEngine",
+    "category": "Ada Engine",
+    "title": "Create your first game project"
+  },
+  "references": {
+    "doc://AdaEngine/tutorials/AdaEngine/EventListeners#Additional-for-physics": {
+      "kind": "section",
+      "identifier": "doc://AdaEngine/tutorials/AdaEngine/EventListeners#Additional-for-physics",
+      "abstract": [
+        {
+          "type": "text",
+          "text": "In this tutorial you will learn about the event listeners system in Ada Engine."
+        },
+        {
+          "type": "text",
+          "text": " "
+        },
+        {
+          "text": "How can you catch events and process them",
+          "type": "text"
+        }
+      ],
+      "title": "Additional for physics",
+      "role": "pseudoSymbol",
+      "url": "/tutorials/adaengine/eventlisteners#Additional-for-physics",
+      "type": "section"
+    },
+    "doc://AdaEngine/tutorials/AdaEngine/CreateFirst2DScene": {
+      "estimatedTime": "20min",
+      "kind": "project",
+      "type": "topic",
+      "identifier": "doc://AdaEngine/tutorials/AdaEngine/CreateFirst2DScene",
+      "url": "/tutorials/adaengine/createfirst2dscene",
+      "title": "Create your first 2D scene",
+      "abstract": [
+        {
+          "type": "text",
+          "text": "In this tutorial you can learn how to create your first 2D scene using AdaEngine"
+        }
+      ],
+      "role": "project"
+    },
+    "doc://AdaEngine/tutorials/AdaEngine/CreateFirst2DScene#Create-an-app": {
+      "identifier": "doc://AdaEngine/tutorials/AdaEngine/CreateFirst2DScene#Create-an-app",
+      "kind": "section",
+      "abstract": [
+        {
+          "type": "text",
+          "text": "In this tutorial you can learn how to create your first 2D scene using AdaEngine"
+        }
+      ],
+      "title": "Create an app",
+      "role": "pseudoSymbol",
+      "url": "/tutorials/adaengine/createfirst2dscene#Create-an-app",
+      "type": "section"
+    },
+    "doc://AdaEngine/tutorials/AdaEngine": {
+      "kind": "overview",
+      "url": "/tutorials/adaengine",
+      "identifier": "doc://AdaEngine/tutorials/AdaEngine",
+      "type": "topic",
+      "title": "Meet AdaEngine",
+      "abstract": [
+        {
+          "text": "Learn the basics of AdaEngine and starts to develop your own games!",
+          "type": "text"
+        }
+      ],
+      "role": "overview"
+    },
+    "doc://AdaEngine/tutorials/AdaEngine/EventListeners#Subscribe-to-scene-events": {
+      "identifier": "doc://AdaEngine/tutorials/AdaEngine/EventListeners#Subscribe-to-scene-events",
+      "kind": "section",
+      "abstract": [
+        {
+          "type": "text",
+          "text": "In this tutorial you will learn about the event listeners system in Ada Engine."
+        },
+        {
+          "type": "text",
+          "text": " "
+        },
+        {
+          "text": "How can you catch events and process them",
+          "type": "text"
+        }
+      ],
+      "title": "Subscribe to scene events",
+      "role": "pseudoSymbol",
+      "url": "/tutorials/adaengine/eventlisteners#Subscribe-to-scene-events",
+      "type": "section"
+    },
+    "doc://AdaEngine/tutorials/AdaEngine/CreateProject#Create-project-using-Xcode": {
+      "url": "/tutorials/adaengine/createproject#Create-project-using-Xcode",
+      "type": "section",
+      "kind": "section",
+      "role": "pseudoSymbol",
+      "abstract": [
+        {
+          "type": "text",
+          "text": "In this tutorial you learn how to create your first AdaEngine project."
+        }
+      ],
+      "identifier": "doc://AdaEngine/tutorials/AdaEngine/CreateProject#Create-project-using-Xcode",
+      "title": "Create project using Xcode."
+    },
+    "doc://AdaEngine/tutorials/AdaEngine/CreateFirst2DScene#Create-a-main-camera": {
+      "title": "Create a main camera.",
+      "type": "section",
+      "role": "pseudoSymbol",
+      "abstract": [
+        {
+          "type": "text",
+          "text": "In this tutorial you can learn how to create your first 2D scene using AdaEngine"
+        }
+      ],
+      "identifier": "doc://AdaEngine/tutorials/AdaEngine/CreateFirst2DScene#Create-a-main-camera",
+      "url": "/tutorials/adaengine/createfirst2dscene#Create-a-main-camera",
+      "kind": "section"
+    },
+    "CP-2-3-app.swift": {
+      "identifier": "CP-2-3-app.swift",
+      "fileName": "FirstPackageApp.swift",
+      "content": [
+        "import AdaEngine",
+        "",
+        "@main",
+        "struct FirstPackageApp: App {",
+        "    var scene: some AppScene {",
+        "        GameAppScene {",
+        "            Scene()",
+        "        }",
+        "    }",
+        "}"
+      ],
+      "highlights": [
+        {
+          "line": 5
+        },
+        {
+          "line": 6
+        },
+        {
+          "line": 7
+        },
+        {
+          "line": 8
+        },
+        {
+          "line": 9
+        }
+      ],
+      "syntax": "swift",
+      "type": "file",
+      "fileType": "swift"
+    },
+    "doc://AdaEngine/tutorials/AdaEngine/PlayerAndText#Add-Player-component": {
+      "kind": "section",
+      "identifier": "doc://AdaEngine/tutorials/AdaEngine/PlayerAndText#Add-Player-component",
+      "abstract": [
+        {
+          "type": "text",
+          "text": "In this tutorial, you will learn how to add a player component that you can control and how to add text and various labels to your game scene."
+        }
+      ],
+      "title": "Add Player component",
+      "role": "pseudoSymbol",
+      "url": "/tutorials/adaengine/playerandtext#Add-Player-component",
+      "type": "section"
+    },
+    "doc://AdaEngine/tutorials/AdaEngine/PlayerAndText": {
+      "url": "/tutorials/adaengine/playerandtext",
+      "abstract": [
+        {
+          "text": "In this tutorial, you will learn how to add a player component that you can control and how to add text and various labels to your game scene.",
+          "type": "text"
+        }
+      ],
+      "role": "project",
+      "title": "Player and Text in Ada Engine",
+      "kind": "project",
+      "estimatedTime": "5min",
+      "identifier": "doc://AdaEngine/tutorials/AdaEngine/PlayerAndText",
+      "type": "topic"
+    },
+    "doc://AdaEngine/tutorials/AdaEngine/EventListeners#Base-of-Event-Subscriber-pattern": {
+      "kind": "section",
+      "url": "/tutorials/adaengine/eventlisteners#Base-of-Event-Subscriber-pattern",
+      "type": "section",
+      "role": "pseudoSymbol",
+      "identifier": "doc://AdaEngine/tutorials/AdaEngine/EventListeners#Base-of-Event-Subscriber-pattern",
+      "abstract": [
+        {
+          "type": "text",
+          "text": "In this tutorial you will learn about the event listeners system in Ada Engine."
+        },
+        {
+          "type": "text",
+          "text": " "
+        },
+        {
+          "text": "How can you catch events and process them",
+          "type": "text"
+        }
+      ],
+      "title": "Base of Event-Subscriber pattern"
+    },
+    "CP-2-2-app.swift": {
+      "type": "file",
+      "fileType": "swift",
+      "syntax": "swift",
+      "identifier": "CP-2-2-app.swift",
+      "fileName": "FirstPackageApp.swift",
+      "content": [
+        "import AdaEngine",
+        "",
+        "@main",
+        "struct FirstPackageApp: App {",
+        "    ",
+        "}"
+      ],
+      "highlights": [
+        {
+          "line": 1
+        },
+        {
+          "line": 5
+        }
+      ]
+    },
+    "doc://AdaEngine/tutorials/AdaEngine/CreateFirst2DScene#First-sprite": {
+      "type": "section",
+      "url": "/tutorials/adaengine/createfirst2dscene#First-sprite",
+      "abstract": [
+        {
+          "type": "text",
+          "text": "In this tutorial you can learn how to create your first 2D scene using AdaEngine"
+        }
+      ],
+      "kind": "section",
+      "role": "pseudoSymbol",
+      "title": "First sprite",
+      "identifier": "doc://AdaEngine/tutorials/AdaEngine/CreateFirst2DScene#First-sprite"
+    },
+    "CP-2-7.png": {
+      "type": "image",
+      "alt": "We add experimental-cxx-interop to project.",
+      "variants": [
+        {
+          "url": "/images/CP-2-7.png",
+          "traits": [
+            "1x",
+            "light"
+          ]
+        }
+      ],
+      "identifier": "CP-2-7.png"
+    },
+    "doc://AdaEngine/tutorials/AdaEngine/Create-your-first-2D-game-project.": {
+      "kind": "article",
+      "identifier": "doc://AdaEngine/tutorials/AdaEngine/Create-your-first-2D-game-project.",
+      "abstract": [],
+      "title": "Create your first 2D game project.",
+      "role": "article",
+      "url": "/tutorials/adaengine/create-your-first-2d-game-project.",
+      "type": "topic"
+    },
+    "CP-2-8.png": {
+      "variants": [
+        {
+          "url": "/images/CP-2-8.png",
+          "traits": [
+            "1x",
+            "light"
+          ]
+        }
+      ],
+      "identifier": "CP-2-8.png",
+      "alt": "App Sanbox",
+      "type": "image"
+    },
+    "CP-2-4-app.swift": {
+      "highlights": [
+        {
+          "line": 9
+        },
+        {
+          "line": 10
+        }
+      ],
+      "identifier": "CP-2-4-app.swift",
+      "type": "file",
+      "syntax": "swift",
+      "content": [
+        "import AdaEngine",
+        "",
+        "@main",
+        "struct FirstPackageApp: App {",
+        "    var scene: some AppScene {",
+        "        GameAppScene {",
+        "            Scene()",
+        "        }",
+        "        .windowMode(.windowed)",
+        "        .windowTitle(\"First Ada App\")",
+        "    }",
+        "}"
+      ],
+      "fileName": "FirstPackageApp.swift",
+      "fileType": "swift"
+    },
+    "CP-2-3.png": {
+      "variants": [
+        {
+          "url": "/images/CP-2-3.png",
+          "traits": [
+            "1x",
+            "light"
+          ]
+        }
+      ],
+      "identifier": "CP-2-3.png",
+      "alt": "You can see an Xcode project for SwiftUI",
+      "type": "image"
+    },
+    "CP-2-2.png": {
+      "identifier": "CP-2-2.png",
+      "alt": "Popup when you choose project template",
+      "variants": [
+        {
+          "traits": [
+            "1x",
+            "light"
+          ],
+          "url": "/images/CP-2-2.png"
+        }
+      ],
+      "type": "image"
+    },
+    "doc://AdaEngine/tutorials/AdaEngine/CreateProject": {
+      "url": "/tutorials/adaengine/createproject",
+      "abstract": [
+        {
+          "text": "In this tutorial you learn how to create your first AdaEngine project.",
+          "type": "text"
+        }
+      ],
+      "role": "project",
+      "title": "Create your first game project",
+      "kind": "project",
+      "estimatedTime": "5min",
+      "identifier": "doc://AdaEngine/tutorials/AdaEngine/CreateProject",
+      "type": "topic"
+    },
+    "doc://AdaEngine/tutorials/AdaEngine/PlayerAndText#Add-Text-component": {
+      "title": "Add Text component",
+      "type": "section",
+      "role": "pseudoSymbol",
+      "abstract": [
+        {
+          "type": "text",
+          "text": "In this tutorial, you will learn how to add a player component that you can control and how to add text and various labels to your game scene."
+        }
+      ],
+      "identifier": "doc://AdaEngine/tutorials/AdaEngine/PlayerAndText#Add-Text-component",
+      "url": "/tutorials/adaengine/playerandtext#Add-Text-component",
+      "kind": "section"
+    },
+    "CP-1-1.png": {
+      "variants": [
+        {
+          "traits": [
+            "1x",
+            "light"
+          ],
+          "url": "/images/CP-1-1.png"
+        }
+      ],
+      "identifier": "CP-1-1.png",
+      "alt": "You can see Xcode Welcome screen.",
+      "type": "image"
+    },
+    "doc://AdaEngine/tutorials/AdaEngine/CreateFirst2DScene#Make-it-move": {
+      "type": "section",
+      "url": "/tutorials/adaengine/createfirst2dscene#Make-it-move",
+      "abstract": [
+        {
+          "type": "text",
+          "text": "In this tutorial you can learn how to create your first 2D scene using AdaEngine"
+        }
+      ],
+      "kind": "section",
+      "role": "pseudoSymbol",
+      "title": "Make it move",
+      "identifier": "doc://AdaEngine/tutorials/AdaEngine/CreateFirst2DScene#Make-it-move"
+    },
+    "doc://AdaEngine/tutorials/AdaEngine/EventListeners#Type-of-events": {
+      "kind": "section",
+      "url": "/tutorials/adaengine/eventlisteners#Type-of-events",
+      "type": "section",
+      "role": "pseudoSymbol",
+      "identifier": "doc://AdaEngine/tutorials/AdaEngine/EventListeners#Type-of-events",
+      "abstract": [
+        {
+          "type": "text",
+          "text": "In this tutorial you will learn about the event listeners system in Ada Engine."
+        },
+        {
+          "type": "text",
+          "text": " "
+        },
+        {
+          "text": "How can you catch events and process them",
+          "type": "text"
+        }
+      ],
+      "title": "Type of events"
+    },
+    "CP-2-1-app.swift": {
+      "highlights": [],
+      "identifier": "CP-2-1-app.swift",
+      "type": "file",
+      "syntax": "swift",
+      "content": [
+        "import SwiftUI",
+        "",
+        "@main",
+        "struct FirstPackageApp: App {",
+        "    var body: some Scene {",
+        "        WindowGroup {",
+        "            ContentView()",
+        "        }",
+        "    }",
+        "}"
+      ],
+      "fileName": "FirstPackageApp.swift",
+      "fileType": "swift"
+    },
+    "doc://AdaEngine/tutorials/AdaEngine/CreateFirst2DScene#Intro": {
+      "kind": "section",
+      "url": "/tutorials/adaengine/createfirst2dscene#Intro",
+      "identifier": "doc://AdaEngine/tutorials/AdaEngine/CreateFirst2DScene#Intro",
+      "role": "pseudoSymbol",
+      "title": "Intro",
+      "type": "section",
+      "abstract": [
+        {
+          "type": "text",
+          "text": "In this tutorial you can learn how to create your first 2D scene using AdaEngine"
+        }
+      ]
+    },
+    "CP-2-9.png": {
+      "variants": [
+        {
+          "url": "/images/CP-2-9.png",
+          "traits": [
+            "1x",
+            "light"
+          ]
+        }
+      ],
+      "identifier": "CP-2-9.png",
+      "alt": "Your first application window",
+      "type": "image"
+    },
+    "CP-2-4.png": {
+      "identifier": "CP-2-4.png",
+      "alt": "You can see package dependencies tab in Xcode",
+      "variants": [
+        {
+          "traits": [
+            "1x",
+            "light"
+          ],
+          "url": "/images/CP-2-4.png"
+        }
+      ],
+      "type": "image"
+    },
+    "doc://AdaEngine/tutorials/AdaEngine/EventListeners": {
+      "estimatedTime": "5min",
+      "kind": "project",
+      "type": "topic",
+      "identifier": "doc://AdaEngine/tutorials/AdaEngine/EventListeners",
+      "url": "/tutorials/adaengine/eventlisteners",
+      "title": "Event Listeners in Ada Engine",
+      "abstract": [
+        {
+          "type": "text",
+          "text": "In this tutorial you will learn about the event listeners system in Ada Engine."
+        },
+        {
+          "text": " ",
+          "type": "text"
+        },
+        {
+          "text": "How can you catch events and process them",
+          "type": "text"
+        }
+      ],
+      "role": "project"
+    }
+  }
+}

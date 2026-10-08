@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://docs.adaengine.org/documentation/math/vector4/init(x:y:z:w:)/</loc></url>
+  <url><loc>https://docs.adaengine.org/documentation/math/vector4/isnan/</loc></url>
+  <url><loc>https://docs.adaengine.org/documentation/math/vector4/normalized/</loc></url>
+  <url><loc>https://docs.adaengine.org/documentation/math/vector4/one/</loc></url>
+  <url><loc>https://docs.adaengine.org/documentation/math/vector4/squaredlength/</loc></url>
+  <url><loc>https://docs.adaengine.org/documentation/math/vector4/subscript(_:)/</loc></url>
+  <url><loc>https://docs.adaengine.org/documentation/math/vector4/w/</loc></url>
+  <url><loc>https://docs.adaengine.org/documentation/math/vector4/x/</loc></url>
+  <url><loc>https://docs.adaengine.org/documentation/math/vector4/xyz/</loc></url>
+  <url><loc>https://docs.adaengine.org/documentation/math/vector4/y/</loc></url>
+  <url><loc>https://docs.adaengine.org/documentation/math/vector4/z/</loc></url>
+  <url><loc>https://docs.adaengine.org/documentation/math/vector4/zero/</loc></url>
+  <url><loc>https://docs.adaengine.org/tutorials/adaengine/</loc></url>
+  <url><loc>https://docs.adaengine.org/tutorials/adaengine/animatedtext/</loc></url>
+  <url><loc>https://docs.adaengine.org/tutorials/adaengine/createfirst2dscene/</loc></url>
+  <url><loc>https://docs.adaengine.org/tutorials/adaengine/createproject/</loc></url>
+  <url><loc>https://docs.adaengine.org/tutorials/adaengine/eventlisteners/</loc></url>
+  <url><loc>https://docs.adaengine.org/tutorials/adaengine/gamepadinput/</loc></url>
+  <url><loc>https://docs.adaengine.org/tutorials/adaengine/playerandtext/</loc></url>
+  <url><loc>https://docs.adaengine.org/tutorials/adaengine/uibasics/</loc></url>
+</urlset>

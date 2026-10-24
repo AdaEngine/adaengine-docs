@@ -1,0 +1,575 @@
+/* Ada editorial documentation. DocC owns layout, routing, controls and appearance. */
+:root {
+  --ada-theme-background: #f8f8f5;
+  --ada-theme-surface: #ffffff;
+  --ada-theme-surface-elevated: #eeeeeb;
+  --ada-theme-border: #d6d6d2;
+  --ada-theme-text: #191a1d;
+  --ada-theme-muted: #65666b;
+  --ada-theme-link: #3459c7;
+  --ada-theme-focus: #3459c7;
+  --ada-theme-focus-fill: rgb(52 89 199 / 18%);
+  --ada-theme-code: #efefec;
+  --ada-theme-keyword: #3459c7;
+  --ada-theme-type: #08796c;
+  --ada-theme-string: #a04420;
+  --ada-theme-number: #526d18;
+  --ada-theme-comment: #68696e;
+  --ada-theme-font: Arial, Helvetica, -apple-system, BlinkMacSystemFont, sans-serif;
+  --ada-theme-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+}
+
+body[data-color-scheme="dark"] {
+  color-scheme: dark;
+  --ada-theme-background: #111215;
+  --ada-theme-surface: #17181c;
+  --ada-theme-surface-elevated: #202126;
+  --ada-theme-border: #343539;
+  --ada-theme-text: #f4f4f2;
+  --ada-theme-muted: #a0a1a5;
+  --ada-theme-link: #688bff;
+  --ada-theme-focus: #688bff;
+  --ada-theme-focus-fill: rgb(104 139 255 / 24%);
+  --ada-theme-code: #17181c;
+  --ada-theme-keyword: #94adff;
+  --ada-theme-type: #70d6c3;
+  --ada-theme-string: #eeb99e;
+  --ada-theme-number: #bdd791;
+  --ada-theme-comment: #a0a1a5;
+}
+
+body[data-color-scheme="light"] {
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  body[data-color-scheme="auto"] {
+    color-scheme: dark;
+    --ada-theme-background: #111215;
+    --ada-theme-surface: #17181c;
+    --ada-theme-surface-elevated: #202126;
+    --ada-theme-border: #343539;
+    --ada-theme-text: #f4f4f2;
+    --ada-theme-muted: #a0a1a5;
+    --ada-theme-link: #688bff;
+    --ada-theme-focus: #688bff;
+    --ada-theme-focus-fill: rgb(104 139 255 / 24%);
+    --ada-theme-code: #17181c;
+    --ada-theme-keyword: #94adff;
+    --ada-theme-type: #70d6c3;
+    --ada-theme-string: #eeb99e;
+    --ada-theme-number: #bdd791;
+    --ada-theme-comment: #a0a1a5;
+  }
+}
+
+/* Resolve DocC tokens on the appearance element so changing its mode works live. */
+:root,
+body[data-color-scheme] {
+  --border-radius: 0;
+  --code-border-radius: 0;
+  --tutorial-step-border-radius: 0;
+  --typography-html-font: var(--ada-theme-font);
+  --typography-code-font: var(--ada-theme-mono);
+  --color-text: var(--ada-theme-text);
+  --color-secondary-label: var(--ada-theme-muted);
+  --color-text-background: var(--ada-theme-background);
+  --color-article-background: var(--ada-theme-background);
+  --color-article-body-background: var(--ada-theme-background);
+  --color-fill: var(--ada-theme-background);
+  --color-fill-secondary: var(--ada-theme-surface);
+  --color-fill-tertiary: var(--ada-theme-surface-elevated);
+  --color-fill-quaternary: var(--ada-theme-border);
+  --color-fill-gray: var(--ada-theme-text);
+  --color-fill-gray-secondary: var(--ada-theme-muted);
+  --color-fill-gray-tertiary: var(--ada-theme-muted);
+  --color-fill-gray-quaternary: var(--ada-theme-border);
+  --color-grid: var(--ada-theme-border);
+  --colors-grid: var(--ada-theme-border);
+  --color-link: var(--ada-theme-link);
+  --color-standard-blue: var(--ada-theme-link);
+  --color-focus-border-color: var(--ada-theme-focus);
+  --color-focus-color: var(--ada-theme-focus-fill);
+  --color-code-background: var(--ada-theme-code);
+  --color-code-plain: var(--ada-theme-text);
+  --color-card-background: var(--ada-theme-surface);
+  --color-card-shadow: transparent;
+  --color-navigator-item-hover: var(--ada-theme-surface-elevated);
+  --color-nav-background: var(--ada-theme-background);
+  --color-nav-solid-background: var(--ada-theme-background);
+  --color-nav-stuck: var(--ada-theme-background);
+  --color-nav-uiblur-stuck: var(--ada-theme-background);
+  --color-nav-expanded: var(--ada-theme-background);
+  --color-nav-uiblur-expanded: var(--ada-theme-background);
+  --color-nav-dark-solid-background: var(--ada-theme-background);
+  --color-nav-dark-stuck: var(--ada-theme-background);
+  --color-nav-dark-uiblur-stuck: var(--ada-theme-background);
+  --color-nav-dark-expanded: var(--ada-theme-background);
+  --color-nav-dark-uiblur-expanded: var(--ada-theme-background);
+  --color-syntax-keywords: var(--ada-theme-keyword);
+  --color-syntax-attributes: var(--ada-theme-keyword);
+  --color-syntax-other-type-names: var(--ada-theme-type);
+  --color-syntax-strings: var(--ada-theme-string);
+  --color-syntax-numbers: var(--ada-theme-number);
+  --color-syntax-comments: var(--ada-theme-comment);
+  --color-syntax-marks: var(--ada-theme-muted);
+  --color-tutorial-background: var(--ada-theme-background);
+  --color-tutorial-hero-background: var(--ada-theme-surface);
+  --color-tutorial-hero-text: var(--ada-theme-text);
+  --color-tutorials-overview-background: var(--ada-theme-background);
+  --color-tutorials-overview-content: var(--ada-theme-text);
+  --color-tutorials-overview-content-alt: var(--ada-theme-muted);
+  --color-tutorials-overview-header-text: var(--ada-theme-text);
+  --color-tutorials-overview-fill-secondary: var(--ada-theme-surface);
+  --color-tutorials-overview-eyebrow: var(--ada-theme-link);
+  --color-tutorials-overview-icon: var(--ada-theme-link);
+  --color-tutorials-overview-link: var(--ada-theme-link);
+  --color-tutorials-overview-navigation-link: var(--ada-theme-muted);
+  --color-tutorials-overview-navigation-link-hover: var(--ada-theme-text);
+  --color-tutorials-overview-navigation-link-active: var(--ada-theme-link);
+  --color-tutorials-teal: var(--ada-theme-link);
+  --color-step-background: var(--ada-theme-surface);
+  --color-step-focused: var(--ada-theme-link);
+  --color-step-text: var(--ada-theme-muted);
+  --color-step-caption: var(--ada-theme-border);
+  --color-call-to-action-background: var(--ada-theme-surface);
+  --color-tutorial-assessments-background: var(--ada-theme-surface);
+  --color-tutorial-navbar-dropdown-background: var(--ada-theme-background);
+  --color-tutorial-navbar-dropdown-border: var(--ada-theme-border);
+  --color-tutorial-quiz-border-active: var(--ada-theme-link);
+  --color-runtime-preview-background: var(--ada-theme-surface-elevated);
+  --color-runtime-preview-text: var(--ada-theme-muted);
+}
+
+html,
+body,
+.documentation-layout,
+.tutorials-overview,
+.tutorials-overview .learning-path,
+.tutorial {
+  background: var(--ada-theme-background) !important;
+}
+
+body {
+  color: var(--ada-theme-text);
+  font-family: var(--ada-theme-font);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.documentation-hero .title,
+.tutorials-overview .hero .title,
+.tutorial .heading {
+  font-family: var(--ada-theme-font);
+  font-weight: 750;
+  letter-spacing: -0.035em;
+}
+
+/* DocC loads scoped article styles after this asset during client navigation. */
+body[data-color-scheme] .documentation-layout :is(h1, h2, h3, h4, h5, h6),
+body[data-color-scheme] .documentation-layout .topictitle .title,
+body[data-color-scheme] .tutorials-overview .hero .title,
+body[data-color-scheme] .tutorial .heading {
+  font-weight: 750 !important;
+}
+
+h1,
+.documentation-hero .title,
+.tutorials-overview .hero .title {
+  font-weight: 800;
+  letter-spacing: -0.045em;
+}
+
+body[data-color-scheme] .documentation-layout h1,
+body[data-color-scheme] .documentation-layout .topictitle .title,
+body[data-color-scheme] .tutorials-overview .hero .title {
+  font-weight: 800 !important;
+}
+
+.documentation-layout main p,
+.documentation-layout main li,
+.tutorial .content p,
+.tutorial .content li {
+  line-height: 1.65;
+}
+
+code,
+pre,
+.code-voice {
+  font-family: var(--ada-theme-mono);
+}
+
+a,
+.link {
+  text-underline-offset: 0.18em;
+  text-decoration-thickness: 0.08em;
+}
+
+:where(a, button, input, select, textarea, [tabindex]):focus-visible {
+  outline: 2px solid var(--ada-theme-focus);
+  outline-offset: 3px;
+}
+
+.nav__background,
+.documentation-layout-aside,
+.navigator-filter,
+.filter-wrapper,
+.tutorials-overview .nav__background,
+.tutorial .nav__background {
+  background: var(--ada-theme-background) !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+.documentation-layout-aside {
+  border-right: 1px solid var(--ada-theme-border);
+}
+
+.nav,
+.tutorials-overview .nav,
+.tutorial .nav {
+  border-bottom: 1px solid var(--ada-theme-border);
+}
+
+.navigator-card-item .head-wrapper,
+.technology-title,
+.sidenav-icon-wrapper,
+.quick-navigation-open,
+.filter__input,
+button,
+input,
+select,
+textarea {
+  border-radius: 0 !important;
+}
+
+.navigator-card-item.active .head-wrapper,
+.technology-title.router-link-exact-active {
+  box-shadow: inset 2px 0 var(--ada-theme-link);
+}
+
+.documentation-hero {
+  margin: 20px 22px 0;
+  border: 1px solid var(--ada-theme-border);
+  border-radius: 0;
+  background: var(--ada-theme-surface) !important;
+  box-shadow: none;
+}
+
+.documentation-hero .abstract {
+  color: var(--ada-theme-muted);
+}
+
+.eyebrow,
+.tutorial .step-label,
+.tutorial .call-to-action .label,
+.tutorials-overview .chapter .eyebrow {
+  font-family: var(--ada-theme-mono);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.11em;
+  line-height: 1.5;
+  text-transform: uppercase;
+}
+
+.code-listing,
+.contenttable,
+aside {
+  border: 1px solid var(--ada-theme-border) !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+}
+
+.code-listing {
+  position: relative;
+  overflow: hidden;
+  background: var(--ada-theme-code);
+}
+
+.code-listing pre {
+  scrollbar-color: var(--ada-theme-muted) transparent;
+}
+
+/* Declaration and relationship layouts retain DocC's horizontal overflow. */
+.link-block,
+.declaration,
+.relationships {
+  overflow: visible;
+  border: 0 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+}
+
+code:not(.code-line-container code),
+.code-voice {
+  border-radius: 0;
+}
+
+.code-listing[data-syntax="ada"]::before {
+  position: absolute;
+  z-index: 1;
+  top: 10px;
+  left: 14px;
+  padding: 3px 7px;
+  border: 1px solid var(--ada-theme-border);
+  background: var(--ada-theme-surface-elevated);
+  color: var(--ada-theme-link);
+  content: "AdaScript";
+  font-family: var(--ada-theme-mono);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.09em;
+  line-height: 18px;
+  text-transform: uppercase;
+}
+
+.code-listing[data-syntax="ada"] pre {
+  padding-top: 44px !important;
+}
+
+.ada-token-keyword,
+.ada-token-annotation {
+  color: var(--ada-theme-keyword);
+  font-weight: 600;
+}
+
+.ada-token-type { color: var(--ada-theme-type); }
+.ada-token-string { color: var(--ada-theme-string); }
+.ada-token-number { color: var(--ada-theme-number); }
+.ada-token-comment { color: var(--ada-theme-comment); font-style: italic; }
+.ada-token-punctuation { color: var(--ada-theme-muted); }
+
+/* Tutorial overview, chapter cards and tutorial navigation. */
+.tutorials-overview {
+  min-height: 100vh;
+  color: var(--ada-theme-text);
+}
+
+.tutorials-overview .hero {
+  box-sizing: border-box;
+  margin-top: 24px;
+  margin-bottom: 48px;
+  padding-right: 40px;
+  padding-left: 40px;
+}
+
+/* Tutorial components otherwise keep white hero/navigation text in Light. */
+body[data-color-scheme] .tutorials-overview .radial-gradient {
+  background: var(--ada-theme-background) !important;
+}
+
+body[data-color-scheme] .tutorials-overview .hero,
+body[data-color-scheme] .tutorial .tutorial-hero .hero {
+  color: var(--ada-theme-text);
+}
+
+body[data-color-scheme] .tutorials-overview .hero :is(.title, .heading),
+body[data-color-scheme] .tutorial .tutorial-hero :is(.title, .heading),
+body[data-color-scheme] :is(.tutorials-overview, .tutorial) .nav .nav-title {
+  color: var(--ada-theme-text) !important;
+}
+
+body[data-color-scheme] .tutorials-overview .hero :is(.description, .abstract),
+body[data-color-scheme] .tutorial .tutorial-hero :is(.description, .abstract) {
+  color: var(--ada-theme-muted) !important;
+}
+
+body[data-color-scheme] :is(.tutorials-overview, .tutorial) .nav a {
+  color: var(--ada-theme-link);
+}
+
+.tutorials-overview .hero,
+.tutorials-overview .chapter.tile,
+.tutorial .tutorial-hero .hero,
+.tutorial .section > .intro-container,
+.tutorial .step,
+.tutorial .assessments,
+.tutorial .call-to-action .row {
+  border: 1px solid var(--ada-theme-border);
+  border-radius: 0;
+  background: var(--ada-theme-surface) !important;
+  box-shadow: none;
+}
+
+/* Keep DocC's answer correctness/selection colors above this neutral geometry. */
+.tutorial .choice {
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.tutorials-overview .chapter.tile {
+  margin-top: 0;
+  margin-bottom: 24px;
+}
+
+.tutorials-overview .chapter .eyebrow,
+.tutorials-overview .chapter .topic-icon,
+.tutorial .tutorial-hero .eyebrow,
+.tutorial .section .eyebrow,
+.tutorial .step-label,
+.tutorial .call-to-action .label {
+  color: var(--ada-theme-link) !important;
+}
+
+.tutorials-overview .chapter .name-text {
+  color: var(--ada-theme-text);
+  font-weight: 700;
+  letter-spacing: -0.025em;
+}
+
+.tutorials-overview .chapter .topic {
+  background: transparent !important;
+}
+
+.tutorials-overview .tutorials-navigation-link {
+  display: block;
+  margin-left: -10px;
+  padding: 8px 10px;
+}
+
+.tutorials-overview .chapter .topic:hover,
+.tutorials-overview .tutorials-navigation-link:hover,
+.tutorials-overview .tutorials-navigation-link.active {
+  background: var(--ada-theme-surface-elevated) !important;
+}
+
+.tutorial .button-cta,
+.tutorials-overview .button-cta {
+  border: 1px solid var(--ada-theme-border);
+  border-radius: 0 !important;
+  background: var(--ada-theme-text) !important;
+  color: var(--ada-theme-background);
+  font-family: var(--ada-theme-mono);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  box-shadow: none;
+}
+
+.tutorial .button-cta:hover,
+.tutorials-overview .button-cta:hover {
+  border-color: var(--ada-theme-link);
+  background: var(--ada-theme-link) !important;
+  color: var(--ada-theme-background);
+  box-shadow: none;
+  text-decoration: none;
+}
+
+/* Scoped tutorial styles load later and otherwise force white CTA labels. */
+body[data-color-scheme] :is(.tutorial, .tutorials-overview) .button-cta:not(:disabled):not([aria-disabled="true"]) {
+  color: var(--ada-theme-background) !important;
+}
+
+body[data-color-scheme] :is(.tutorial, .tutorials-overview) .button-cta:not(:disabled):not([aria-disabled="true"]) * {
+  color: inherit !important;
+}
+
+/* Tutorial project: leave DocC's sticky sections and step controls in charge. */
+.tutorial {
+  overflow-x: clip;
+  color: var(--ada-theme-text);
+}
+
+.tutorial .tutorial-hero { padding-top: 24px; }
+
+.tutorial .tutorial-hero .hero {
+  box-sizing: border-box;
+  width: min(calc(100% - 48px), 1180px);
+  margin: 0 auto;
+}
+
+.tutorial .tutorial-hero .metadata .item {
+  border-color: var(--ada-theme-border);
+}
+
+.tutorial .section > .intro-container {
+  box-sizing: border-box;
+  padding: 30px 32px;
+}
+
+.tutorial .step::before {
+  width: 3px;
+  border-color: var(--ada-theme-link);
+  background: var(--ada-theme-link);
+}
+
+.tutorial .step.focused,
+.tutorial .step:focus {
+  border-color: var(--ada-theme-focus);
+  background: var(--ada-theme-surface-elevated) !important;
+}
+
+.tutorial .asset-container,
+.tutorial .code-preview {
+  border-left: 1px solid var(--ada-theme-border);
+  border-radius: 0;
+  background: var(--ada-theme-code) !important;
+  box-shadow: none;
+}
+
+.tutorials-overview .chapter .asset img,
+.tutorial .runtime-preview {
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.tutorial .runtime-preview { border: 1px solid var(--ada-theme-border); }
+
+.tutorial .code-preview .code-listing { border: 0 !important; }
+
+.tutorial .code-preview .filename,
+.tutorial .code-preview .header {
+  background: var(--ada-theme-surface-elevated);
+}
+
+.tutorial .call-to-action {
+  padding: 48px 0;
+  background: transparent !important;
+}
+
+.tutorial .call-to-action .row {
+  box-sizing: border-box;
+  padding: 48px;
+}
+
+@media only screen and (max-width: 735px) {
+  .documentation-hero { margin: 10px 10px 0; }
+
+  .tutorials-overview .hero {
+    width: calc(100% - 20px);
+    margin-top: 10px;
+    margin-bottom: 24px;
+    padding-right: 22px;
+    padding-left: 22px;
+  }
+
+  .tutorial .tutorial-hero { padding-top: 10px; }
+  .tutorial .tutorial-hero .hero { width: calc(100% - 20px); }
+
+  .tutorial .section > .intro-container {
+    width: calc(100% - 20px);
+    margin-right: 10px;
+    margin-left: 10px;
+    padding: 24px 22px;
+  }
+
+  .tutorial .asset-container,
+  .tutorial .code-preview { border-left: 0; }
+
+  .tutorial .call-to-action { padding: 24px 10px; }
+  .tutorial .call-to-action .row { width: 100%; padding: 30px 24px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tutorials-overview .button-cta,
+  .tutorial .button-cta,
+  .tutorials-overview .chapter .topic,
+  .tutorials-overview .tutorials-navigation-link,
+  .tutorial .step {
+    transition: none;
+  }
+}
